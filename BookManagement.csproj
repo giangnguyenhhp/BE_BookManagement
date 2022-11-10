@@ -1,0 +1,94 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.9" />
+        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.9" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.8" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.9" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.9">
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+          <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.9" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.9">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Npgsql" Version="7.0.0-preview.7" />
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.6" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+        <PackageReference Include="System.Data.Entity.Repository" Version="2.0.0.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="bin\Debug\net6.0\runtimes\unix\lib\netcoreapp2.1" />
+      <Folder Include="bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.0" />
+      <Folder Include="bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.1" />
+      <Folder Include="bin\Debug\net6.0\runtimes\win-arm64\native" />
+      <Folder Include="bin\Debug\net6.0\runtimes\win-arm\native" />
+      <Folder Include="bin\Debug\net6.0\runtimes\win-x64\native" />
+      <Folder Include="bin\Debug\net6.0\runtimes\win-x86\native" />
+      <Folder Include="bin\Debug\net6.0\runtimes\win\lib\netcoreapp2.1" />
+      <Folder Include="bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0" />
+      <Folder Include="bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.1" />
+      <Folder Include="bin\Debug\net6.0\runtimes\win\lib\netstandard2.0" />
+      <Folder Include="Migrations" />
+      <Folder Include="Models\Respond" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="Service\AuthorService.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include=".idea\.idea.BookManagement\.idea\.gitignore" />
+      <Content Include=".idea\.idea.BookManagement\.idea\dataSources.local.xml" />
+      <Content Include=".idea\.idea.BookManagement\.idea\dataSources.xml" />
+      <Content Include=".idea\.idea.BookManagement\.idea\dataSources\bd762e9b-5fd9-4fe7-8d79-a064a32330a6.xml" />
+      <Content Include=".idea\.idea.BookManagement\.idea\dataSources\bd762e9b-5fd9-4fe7-8d79-a064a32330a6\storage_v2\_src_\database\BookManagement.LIwjQw.meta" />
+      <Content Include=".idea\.idea.BookManagement\.idea\dataSources\bd762e9b-5fd9-4fe7-8d79-a064a32330a6\storage_v2\_src_\database\BookManagement.LIwjQw\schema\information_schema.FNRwLQ.meta" />
+      <Content Include=".idea\.idea.BookManagement\.idea\dataSources\bd762e9b-5fd9-4fe7-8d79-a064a32330a6\storage_v2\_src_\database\BookManagement.LIwjQw\schema\pg_catalog.0S1ZNQ.meta" />
+      <Content Include=".idea\.idea.BookManagement\.idea\dataSources\bd762e9b-5fd9-4fe7-8d79-a064a32330a6\storage_v2\_src_\database\BookManagement.LIwjQw\schema\public.abK9xQ.meta" />
+      <Content Include=".idea\.idea.BookManagement\.idea\dataSources\bd762e9b-5fd9-4fe7-8d79-a064a32330a6\storage_v2\_src_\database\postgres.edMnLQ.meta" />
+      <Content Include=".idea\.idea.BookManagement\.idea\dataSources\bd762e9b-5fd9-4fe7-8d79-a064a32330a6\storage_v2\_src_\database\postgres.edMnLQ\schema\information_schema.FNRwLQ.meta" />
+      <Content Include=".idea\.idea.BookManagement\.idea\dataSources\bd762e9b-5fd9-4fe7-8d79-a064a32330a6\storage_v2\_src_\database\postgres.edMnLQ\schema\information_schema.FNRwLQ.zip" />
+      <Content Include=".idea\.idea.BookManagement\.idea\dataSources\bd762e9b-5fd9-4fe7-8d79-a064a32330a6\storage_v2\_src_\database\postgres.edMnLQ\schema\pg_catalog.0S1ZNQ.meta" />
+      <Content Include=".idea\.idea.BookManagement\.idea\dataSources\bd762e9b-5fd9-4fe7-8d79-a064a32330a6\storage_v2\_src_\database\postgres.edMnLQ\schema\pg_catalog.0S1ZNQ.zip" />
+      <Content Include=".idea\.idea.BookManagement\.idea\dataSources\bd762e9b-5fd9-4fe7-8d79-a064a32330a6\storage_v2\_src_\database\postgres.edMnLQ\schema\public.abK9xQ.meta" />
+      <Content Include=".idea\.idea.BookManagement\.idea\efCoreCommonOptions.xml" />
+      <Content Include=".idea\.idea.BookManagement\.idea\encodings.xml" />
+      <Content Include=".idea\.idea.BookManagement\.idea\indexLayout.xml" />
+      <Content Include=".idea\.idea.BookManagement\.idea\projectSettingsUpdater.xml" />
+      <Content Include=".idea\.idea.BookManagement\.idea\sqldialects.xml" />
+      <Content Include=".idea\.idea.BookManagement\.idea\workspace.xml" />
+      <Content Include=".vscode\launch.json" />
+      <Content Include=".vscode\tasks.json" />
+      <Content Include="bin\Debug\net6.0\appsettings.Development.json" />
+      <Content Include="bin\Debug\net6.0\appsettings.json" />
+      <Content Include="bin\Debug\net6.0\BookManagement.deps.json" />
+      <Content Include="bin\Debug\net6.0\BookManagement.dll" />
+      <Content Include="bin\Debug\net6.0\BookManagement.exe" />
+      <Content Include="bin\Debug\net6.0\BookManagement.pdb" />
+      <Content Include="bin\Debug\net6.0\BookManagement.runtimeconfig.json" />
+      <Content Include="bin\Debug\net6.0\Humanizer.dll" />
+      <Content Include="bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll" />
+      <Content Include="bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll" />
+      <Content Include="bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll" />
+      <Content Include="bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll" />
+      <Content Include="bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll" />
+      <Content Include="bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll" />
+      <Content Include="bin\Debug\net6.0\Microsoft.OpenApi.dll" />
+      <Content Include="bin\Debug\net6.0\Npgsql.dll" />
+      <Content Include="bin\Debug\net6.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll" />
+      <Content Include="bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll" />
+      <Content Include="bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll" />
+      <Content Include="bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll" />
+    </ItemGroup>
+
+</Project>
