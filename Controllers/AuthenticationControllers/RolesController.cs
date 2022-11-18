@@ -10,7 +10,7 @@
     [ApiController] [Route("[controller]")]
     public class RolesController : ControllerBase
     {
-        readonly IRoleRepository _roleRepository;
+        private readonly IRoleRepository _roleRepository;
 
         public RolesController(IRoleRepository roleRepository)
         {

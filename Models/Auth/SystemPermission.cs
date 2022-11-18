@@ -3,7 +3,7 @@
     using System.Collections.Generic;
     public static class SystemPermission
     {
-        public readonly static List<string> DefaultClaims = new()
+        public static readonly List<string> DefaultClaims = new()
         {
         CreateAuthor,
         UpdateAuthor,

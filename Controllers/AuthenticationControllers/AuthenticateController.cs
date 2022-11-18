@@ -30,7 +30,7 @@
             _context = context;
         }
 
-        JwtSecurityToken GetToken(List<Claim> authClaims)
+        private JwtSecurityToken GetToken(IEnumerable<Claim> authClaims)
         {
             var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Secret"]));
             var token = new JwtSecurityToken(
@@ -54,8 +54,8 @@
 
                 var authClaims = new List<Claim>
                 {
-                new Claim(ClaimTypes.Name, user.UserName),
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+                new(ClaimTypes.Name, user.UserName),
+                new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
                 };
 
                 //lay role cua user de add vao token

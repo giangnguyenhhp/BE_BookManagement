@@ -50,8 +50,7 @@
                 .Include(p=>p.Books)
                 .FirstOrDefault(p => p.AuthorId == id);
             if (author == null) throw new Exception("Author not existed!!");
-
-
+            
             var books = _context.Book.Where(a => request.BookId.Contains(a.BookId)).ToList();
 
             author.Name = request.Name;

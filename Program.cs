@@ -24,40 +24,43 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 
 //For Entity FrameWork
 builder.Services.AddDbContext<MasterDbContext>(option
-=> option.UseNpgsql(connectionString));
+    => option.UseNpgsql(connectionString));
 
 //For Identity
 builder.Services.AddIdentity<User, Role>().AddEntityFrameworkStores<MasterDbContext>().AddDefaultTokenProviders();
 
 //Adding Authentication
 builder.Services.AddAuthentication(options =>
-{
-    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-})
+    {
+        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+    })
 
 //Adding Jwt Bearer
-.AddJwtBearer(options =>
-{
-    options.SaveToken = true;
-    options.RequireHttpsMetadata = false;
-    options.TokenValidationParameters = new TokenValidationParameters()
+    .AddJwtBearer(options =>
     {
-    ValidateIssuer = true,
-    ValidateAudience = true,
-    ValidAudience = builder.Configuration["JWT:ValidAudience"],
-    ValidIssuer = builder.Configuration["JWT:ValidIssuer"],
-    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Secret"]))
-    };
-});
+        options.SaveToken = true;
+        options.RequireHttpsMetadata = false;
+        options.TokenValidationParameters = new TokenValidationParameters()
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidAudience = builder.Configuration["JWT:ValidAudience"],
+            ValidIssuer = builder.Configuration["JWT:ValidIssuer"],
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Secret"]))
+        };
+    });
 
 //CORS COnfig
 var cors = builder.Configuration.GetSection("CORS").GetChildren().Select(x => x.Value).ToArray();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(policyName,
-    corsPolicyBuilder => { corsPolicyBuilder.WithOrigins(cors).AllowAnyHeader().AllowAnyMethod().AllowCredentials(); });
+        corsPolicyBuilder =>
+        {
+            corsPolicyBuilder.WithOrigins(cors).AllowAnyHeader().AllowAnyMethod().AllowCredentials();
+        });
 });
 
 //Registration Service
@@ -70,12 +73,13 @@ builder.Services.AddScoped<IAccountRepository, AccountRepository>();
 
 // Add services to the container.
 builder.Services.AddControllers().AddNewtonsoftJson(options =>
-options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
 );
 
 builder.Services.AddControllers();
 builder.Services.AddAuthorization();
 builder.Services.AddAuthentication();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(option =>
@@ -83,26 +87,26 @@ builder.Services.AddSwaggerGen(option =>
     option.SwaggerDoc("v1", new OpenApiInfo { Title = "Demo API", Version = "v1" });
     option.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
-    In = ParameterLocation.Header,
-    Description = "Please enter a valid token",
-    Name = "Authorization",
-    Type = SecuritySchemeType.Http,
-    BearerFormat = "JWT",
-    Scheme = "Bearer"
+        In = ParameterLocation.Header,
+        Description = "Please enter a valid token",
+        Name = "Authorization",
+        Type = SecuritySchemeType.Http,
+        BearerFormat = "JWT",
+        Scheme = "Bearer"
     });
     option.AddSecurityRequirement(new OpenApiSecurityRequirement
     {
-    {
-    new OpenApiSecurityScheme
-    {
-    Reference = new OpenApiReference
-    {
-    Type = ReferenceType.SecurityScheme,
-    Id = "Bearer"
-    }
-    },
-    new string[] {}
-    }
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            Array.Empty<string>()
+        }
     });
 });
 
@@ -115,6 +119,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
 // Fix loi CORS
 app.UseCors(policyName);
 

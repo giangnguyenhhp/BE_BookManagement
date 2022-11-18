@@ -8,9 +8,9 @@
     using Models.Request.Account;
     public class AccountRepository : IAccountRepository
     {
-        readonly MasterDbContext _context;
-        readonly RoleManager<Role> _roleManager;
-        readonly UserManager<User> _userManager;
+        private readonly MasterDbContext _context;
+        private readonly RoleManager<Role> _roleManager;
+        private readonly UserManager<User> _userManager;
         public AccountRepository(MasterDbContext context, RoleManager<Role> roleManager, UserManager<User> userManager)
         {
             _context = context;
@@ -21,7 +21,6 @@
         public async Task<List<User>> GetAllAccount()
         {
            return await _context.Users.ToListAsync();
-            
         }
         
         public async Task<List<string>> GetRolesByAccountId(string id)

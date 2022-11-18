@@ -25,12 +25,12 @@ public class AuthorController : ControllerBase
     }
  
     [HttpGet("author/{id}")]
-    [Authorize(Roles = SystemPermission.ReadAuthor)]
+    [Authorize(Roles = "Author.Read")]
     public IActionResult GetAuthor(long id)
     {
         return Ok( _authorRepository.GetAuthorById(id));
     }
-
+    
 
     [HttpPost]
     [Authorize(Roles = SystemPermission.CreateAuthor)]

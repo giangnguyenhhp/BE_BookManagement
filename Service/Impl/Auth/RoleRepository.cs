@@ -13,9 +13,9 @@
     using Models;
     public class RoleRepository : IRoleRepository
     {
-        readonly MasterDbContext _context;
-        readonly RoleManager<Role> _roleManager;
-        readonly UserManager<User> _userManager;
+        private readonly MasterDbContext _context;
+        private readonly RoleManager<Role> _roleManager;
+        private readonly UserManager<User> _userManager;
         public RoleRepository(MasterDbContext context, RoleManager<Role> roleManager, UserManager<User> userManager)
         {
             _context = context;
